@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: space-around;
+            background: linear-gradient(#f0b, #f00, #ba7, #f0b);
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50%;
+            transform: translateY(-50%);
+        }
+        .row {
+            display: flex;
+            user-select: none;
+        }
+        .row button {
+            width: 3.1415926rem;
+            height: 3.1415926rem;
+            line-height: 3.1415926rem;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 1.7rem;
+            background: #abcdef;
+            border: none;
+        }
+        .row button:hover {
+            border: none;
+        }
+        .row .black {
+            background: #ee99ee;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="row row1">
+            <button class="a1">&#9820;</button>
+            <button class="b1 black">&#9822;</button>
+            <button class="c1">&#9821;</button>
+            <button class="d1 black">&#9819;</button>
+
+            <button class="e1">&#9818;</button>
+            <button class="f1 black">&#9821;</button>
+            <button class="g1">&#9822;</button>
+            <button class="h1 black">&#9820;</button>
+        </div>
+        <div class="row row2">
+            <button class="a2 black">&#9823;</button>
+            <button class="b2">&#9823;</button>
+            <button class="c2 black">&#9823;</button>
+            <button class="d2">&#9823;</button>
+
+            <button class="e2 black">&#9823;</button>
+            <button class="f2">&#9823;</button>
+            <button class="g2 black">&#9823;</button>
+            <button class="h2">&#9823;</button>
+        </div>
+        <div class="row row3">
+            <button class="a3"></button>
+            <button class="b3 black"></button>
+            <button class="c3"></button>
+            <button class="d3 black"></button>
+
+            <button class="e3"></button>
+            <button class="f3 black"></button>
+            <button class="g3"></button>
+            <button class="h3 black"></button>
+        </div>
+        <div class="row row1">
+            <button class="a4 black"></button>
+            <button class="b4"></button>
+            <button class="c4 black"></button>
+            <button class="d4"></button>
+
+            <button class="e4 black"></button>
+            <button class="f4"></button>
+            <button class="g4 black"></button>
+            <button class="h4"></button>
+        </div>
+        <div class="row row5">
+            <button class="a5"></button>
+            <button class="b5 black"></button>
+            <button class="c5"></button>
+            <button class="d5 black"></button>
+
+            <button class="e5"></button>
+            <button class="f5 black"></button>
+            <button class="g5"></button>
+            <button class="h5 black"></button>
+        </div>
+        <div class="row row6">
+            <button class="a6 black"></button>
+            <button class="b6"></button>
+            <button class="c6 black"></button>
+            <button class="d6"></button>
+
+            <button class="e6 black"></button>
+            <button class="f6"></button>
+            <button class="g6 black"></button>
+            <button class="h6"></button>
+        </div>
+        <div class="row row7">
+            <button class="a7">&#9817;</button>
+            <button class="b7 black">&#9817;</button>
+            <button class="c7">&#9817;</button>
+            <button class="d7 black">&#9817;</button>
+
+            <button class="e7">&#9817;</button>
+            <button class="f7 black">&#9817;</button>
+            <button class="g7">&#9817;</button>
+            <button class="h7 black">&#9817;</button>
+        </div>
+        <div class="row row8">
+            <button class="a8 black">&#9814;</button>
+            <button class="b8">&#9816;</button>
+            <button class="c8 black">&#9815;</button>
+            <button class="d8">&#9813;</button>
+
+            <button class="e8 black">&#9812;</button>
+            <button class="f8">&#9815;</button>
+            <button class="g8 black">&#9816;</button>
+            <button class="h8">&#9814;</button>
+        </div>
+    </main>
+    <script>
+
+
+
+        // Live reload для бедных:
+        // setTimeout(() => location.reload(true), 0xfff);
+        const state = {
+
+        };
+
+        /*
+        white chess king	♔	U+2654	&#9812;
+        white chess queen	♕	U+2655	&#9813;
+        white chess rook	♖	U+2656	&#9814;
+        white chess bishop	♗	U+2657	&#9815;
+        white chess knight	♘	U+2658	&#9816;
+        white chess pawn	♙	U+2659	&#9817;
+        black chess king	♚	U+265A	&#9818;
+        black chess queen	♛	U+265B	&#9819;
+        black chess rook	♜	U+265C	&#9820;
+        black chess bishop	♝	U+265D	&#9821;
+        black chess knight	♞	U+265E	&#9822;
+        black chess pawn	♟	U+265F	&#9823;
+        * */
+
+
+
+        document.getElementsByTagName("main")[0].onmouseup = (e) => {
+
+        };
+
+
+    </script>
+</body>
+</html>
