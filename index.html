@@ -156,11 +156,26 @@
         black chess knight	♞	U+265E	&#9822;
         black chess pawn	♟	U+265F	&#9823;
         * */
+        const chessPieces = {
+            "♔": {
+                color: "white",
+                name: "king",
+                unicode: 2654,
+                html: "&#9812;",
+                value: "♔",
+            },
+            "♕": {
+                color: "white",
+                name: "king",
+                unicode: 2655,
+                html: "&#9813;",
+                value: "♕",
+            },
+        };
 
 
-
-        document.getElementsByTagName("main")[0].onmouseup = (e) => {
-
+        document.getElementsByTagName("main")[0].onmouseup = (event) => {
+            console.log(this, event);
         };
 
 
