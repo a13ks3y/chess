@@ -17,7 +17,7 @@ main {
     display: flex;
     user-select: none;
 }
-.row button {
+.row div {
     width: 3.1415926rem;
     height: 3.1415926rem;
     line-height: 3.1415926rem;
@@ -25,9 +25,6 @@ main {
     vertical-align: middle;
     font-size: 1.7rem;
     background: #abcdef;
-    border: none;
-}
-.row button:hover {
     border: none;
 }
 .row .black {
