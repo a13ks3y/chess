@@ -3,43 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess</title>
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            width: 100%;
-            height: 100%;
-            justify-content: space-around;
-            background: linear-gradient(#f0b, #f00, #ba7, #f0b);
-        }
-        main {
-            display: flex;
-            flex-direction: column;
-            margin-top: 50%;
-            transform: translateY(-50%);
-        }
-        .row {
-            display: flex;
-            user-select: none;
-        }
-        .row button {
-            width: 3.1415926rem;
-            height: 3.1415926rem;
-            line-height: 3.1415926rem;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 1.7rem;
-            background: #abcdef;
-            border: none;
-        }
-        .row button:hover {
-            border: none;
-        }
-        .row .black {
-            background: #ee99ee;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
     <main>
@@ -132,53 +96,6 @@
             <button class="h8">&#9814;</button>
         </div>
     </main>
-    <script>
-
-
-
-        // Live reload для бедных:
-        // setTimeout(() => location.reload(true), 0xfff);
-        const state = {
-
-        };
-
-        /*
-        white chess king	♔	U+2654	&#9812;
-        white chess queen	♕	U+2655	&#9813;
-        white chess rook	♖	U+2656	&#9814;
-        white chess bishop	♗	U+2657	&#9815;
-        white chess knight	♘	U+2658	&#9816;
-        white chess pawn	♙	U+2659	&#9817;
-        black chess king	♚	U+265A	&#9818;
-        black chess queen	♛	U+265B	&#9819;
-        black chess rook	♜	U+265C	&#9820;
-        black chess bishop	♝	U+265D	&#9821;
-        black chess knight	♞	U+265E	&#9822;
-        black chess pawn	♟	U+265F	&#9823;
-        * */
-        const chessPieces = {
-            "♔": {
-                color: "white",
-                name: "king",
-                unicode: 2654,
-                html: "&#9812;",
-                value: "♔",
-            },
-            "♕": {
-                color: "white",
-                name: "king",
-                unicode: 2655,
-                html: "&#9813;",
-                value: "♕",
-            },
-        };
-
-
-        document.getElementsByTagName("main")[0].onmouseup = (event) => {
-            console.log(this, event);
-        };
-
-
-    </script>
+    <script type="text/javascript" src="index.js"></script>
 </body>
 </html>

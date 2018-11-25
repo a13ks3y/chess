@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    background: linear-gradient(#f0b, #f00, #ba7, #f0b);
+}
+main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+.row {
+    display: flex;
+    user-select: none;
+}
+.row button {
+    width: 3.1415926rem;
+    height: 3.1415926rem;
+    line-height: 3.1415926rem;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.7rem;
+    background: #abcdef;
+    border: none;
+}
+.row button:hover {
+    border: none;
+}
+.row .black {
+    background: #ee99ee;
+}
