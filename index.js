@@ -9,7 +9,7 @@
     white chess knight	♘	U+2658	&#9816;
     white chess pawn	♙	U+2659	&#9817;
     black chess king	♚	U+265A	&#9818;
-    black chess queen	♛	U+265B	&#9819;
+    black chess queen	♛	U+265B	&#981=9;
     black chess rook	♜	U+265C	&#9820;
     black chess bishop	♝	U+265D	&#9821;
     black chess knight	♞	U+265E	&#9822;
@@ -32,8 +32,22 @@ const chessPieces = {
     },
 };
 
+// @todo: highlight possible moves (need to get the state or store it form the beginning and render it)
+const state = {
+    selectedPiece: null,
+    currentPlayer: "white",
+};
 document.getElementsByTagName("main")[0].onmouseup = (event) => {
-    console.log(this, event);
+    console.log(event);
+    const selectedCell = event.target;
+    if (state.selectedPiece) {
+        // user already selected some piece, so
+    } else {
+
+    }
+    state.currentPlayer = state.currentPlayer === "white" ? "black" : "white";
+
+
 };
 
 

@@ -1,32 +1,44 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
     width: 100%;
     height: 100%;
-    justify-content: space-around;
-    background: linear-gradient(#f0b, #f00, #ba7, #f0b);
+    font-family: Helvetica, sans-serif;
 }
+
+header {
+    text-align: center;
+}
+.current-player-container {
+    /* @todo: choose how to highlight current player container underline or bold, or both?*/
+    font-weight: bold;
+    /* text-decoration: underline; */
+}
+
 main {
     display: flex;
     flex-direction: column;
-    margin-top: 50%;
-    transform: translateY(-50%);
+    margin: 0 0 0 50%;
+    transform: translate(-50%, 0);
+    border: 1px solid burlywood;
+    width: calc(3.14rem * 8);
 }
 .row {
     display: flex;
+    justify-content: center;
     user-select: none;
 }
 .row div {
-    width: 3.1415926rem;
-    height: 3.1415926rem;
-    line-height: 3.1415926rem;
     text-align: center;
     vertical-align: middle;
-    font-size: 1.7rem;
-    background: #abcdef;
+    font-size: 2.27em;
+    padding: 0;
+    margin: 0;
+    width: 3.14rem;
+    height: 3.14rem;
+    background: white;
     border: none;
 }
 .row .black {
-    background: #ee99ee;
+    background: burlywood;
 }
