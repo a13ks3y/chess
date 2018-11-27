@@ -27,6 +27,14 @@ const state = {
 const currentPlayerElement = document.getElementById("current-player");
 const mainElement = document.getElementById("main");
 const clearSelection = () => mainElement.childNodes.forEach(rowNode => rowNode.childNodes.forEach(cellNode => cellNode.classList && cellNode.classList.remove("selected")));
+
+const switchPlayer = () => {
+    state.currentPlayer = state.currentPlayer === "white" ? "black" : "white";
+    // let show which players move is now
+    mainElement.className = state.currentPlayer;
+    currentPlayerElement.innerText = state.currentPlayer + "s";
+}
+
 const putPieceIntoTheEmptyCell = (selectedPieceElement) => {
     console.info(state.selectedPieceElement.title, "-", selectedPieceElement.title);
     selectedPieceElement.innerHTML = state.selectedPieceElement.innerHTML;
@@ -34,10 +42,7 @@ const putPieceIntoTheEmptyCell = (selectedPieceElement) => {
     state.selectedPieceElement.innerHTML = "";
     // empty selectedPiece variable, so next time player clicks on the field, it will be selection of the piece.
     state.selectedPieceElement = false;
-    // let show which players move is now
-    state.currentPlayer = state.currentPlayer === "white" ? "black" : "white";
-    mainElement.className = state.currentPlayer;
-    currentPlayerElement.innerText = state.currentPlayer + "s";
+    switchPlayer();
 };
 
 mainElement.onmouseup = (event) => {
@@ -56,7 +61,13 @@ mainElement.onmouseup = (event) => {
         // if it's an enemy (the piece with the different color), then we need to replace
         // this piece with players, otherwise we should just switch
         console.log("cell with piece selected when state.selectedPieceElement is not false.");
-        // @todo: implement eating enemy
+        selectedPieceElement.innerHTML = state.selectedPieceElement.innerHTML;
+        // noinspection JSPrimitiveTypeWrapperUsage
+        state.selectedPieceElement.innerHTML = "";
+        switchPlayer();
+        // @todo: implement eaten pieces on the side of the board
+        clearSelection();
+        state.selectedPieceElement = false;
 
     } else if (!state.selectedPieceElement && selectedPieceElement.innerHTML) {
         // player will use this piece to make his move, so we need to store it somewhere.
@@ -66,18 +77,8 @@ mainElement.onmouseup = (event) => {
             // if white player is trying to move white piece
             // or black player trying to move black piece then let him do it.
             state.selectedPieceElement = selectedPieceElement;
-            clearSelection();
             selectedPieceElement.classList.add("selected");
-        } else {
-            const msg = "You can not move the other players pieces!";
-            console.error(msg);
-            alert(msg);
         }
-
-    } else {
-        // player clicked on the empty cell, so clearing selection
-        clearSelection();
-        console.log("user clicked on the empty cell so clearing selection.");
     }
 };
 
