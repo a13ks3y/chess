@@ -11,7 +11,7 @@ header {
     text-align: center;
     color: white;
     text-transform: uppercase;
-    text-shadow: 0 0.271898rem 1rem gray;
+    text-shadow: 0 0.2718281828rem 1.44rem #808080;
 }
 .current-player-container {
     /* @todo: choose how to highlight current player container underline or bold, or both?*/
@@ -22,19 +22,21 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    margin: 0 0 0 50%;
-    transform: translate(-50%, 0);
+    margin: auto;
     border: 1px solid burlywood;
-    width: calc(3.14rem * 8);
-    box-shadow: 0 0.271898rem 1rem gray;
+    width: calc(3.1415926rem * 8);
+    box-shadow: 0 0.2718281828rem 1.44rem gray;
+    transition-property: transform;
+    transition-duration: 1.618s;
+    transition-timing-function: cubic-bezier(0, 1, 2, 3);
 }
 
 main.black {
-    transform: translate(-50%, 0) scaleY(-1);
+    transform: rotate(-180deg);
 }
 main.black .row div {
-    transform: scaleY(-1);
     border: none;
+    transform: rotate(-180deg);
 }
 
 .row {
@@ -45,16 +47,16 @@ main.black .row div {
 .row div {
     text-align: center;
     vertical-align: middle;
-    font-size: 2.27em;
+    font-size: 2.718281828rem;
     padding: 0;
     margin: 0;
-    width: 3.14rem;
-    height: 3.14rem;
+    width: 3.1415926rem;
+    height: 3.1415926rem;
     background: white;
     border: none;
 }
 .row div.selected {
-    text-shadow: 0 3px 10px black;
+    text-shadow: 0 3px 10px #000;
 }
 .row .black {
     background: burlywood;

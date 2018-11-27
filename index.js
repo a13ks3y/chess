@@ -27,27 +27,57 @@ const state = {
 const currentPlayerElement = document.getElementById("current-player");
 const mainElement = document.getElementById("main");
 const clearSelection = () => mainElement.childNodes.forEach(rowNode => rowNode.childNodes.forEach(cellNode => cellNode.classList && cellNode.classList.remove("selected")));
+const putPieceIntoTheEmptyCell = (selectedPieceElement) => {
+    console.info(state.selectedPieceElement.title, "-", selectedPieceElement.title);
+    selectedPieceElement.innerHTML = state.selectedPieceElement.innerHTML;
+    // noinspection JSPrimitiveTypeWrapperUsage
+    state.selectedPieceElement.innerHTML = "";
+    // empty selectedPiece variable, so next time player clicks on the field, it will be selection of the piece.
+    state.selectedPieceElement = false;
+    // let show which players move is now
+    state.currentPlayer = state.currentPlayer === "white" ? "black" : "white";
+    mainElement.className = state.currentPlayer;
+    currentPlayerElement.innerText = state.currentPlayer + "s";
+};
+
 mainElement.onmouseup = (event) => {
     const selectedPieceElement = event.target;
+    const selectedPieceCode = selectedPieceElement && selectedPieceElement.innerHTML.charCodeAt(0x0);
+    const stateSelecetedPieceCode = state.selectedPieceElement && state.selectedPieceElement.innerHTML.charCodeAt(0x0);
+
+    // @todo replace if with a switch-case?
     // if player already selected some piece, and click on the <strong>not empty</strong> cell, it means...
     if (state.selectedPieceElement && !selectedPieceElement.innerHTML) {
-        // ...that user already selected some piece, so now it's time to choose which cell he wants to put it.
-        selectedPieceElement.innerHTML = state.selectedPieceElement.innerHTML;
-        state.selectedPieceElement.innerHTML = "";
-        // empty selectedPiece variable, so next time player clicks on the field, it will be selection of the piece.
-        state.selectedPieceElement = false;
-        // let show which players move is now
-        state.currentPlayer = state.currentPlayer === "white" ? "black" : "white";
-        mainElement.className = state.currentPlayer;
-        currentPlayerElement.innerText = state.currentPlayer + "s";
+        // ...that player already selected some piece, so now it's time to choose which cell he wants to put it.
+        putPieceIntoTheEmptyCell(selectedPieceElement);
         clearSelection();
-    } else if (selectedPieceElement.innerHTML) {
-        // user will use this piece to make his move, so we need to store it somewhere.
-        state.selectedPieceElement = selectedPieceElement;
-        clearSelection();
-        selectedPieceElement.classList.add("selected");
+    } else if (state.selectedPieceElement && selectedPieceElement.innerHTML) {
+        // player clicked to the cell with other piece, so we need to check
+        // if it's an enemy (the piece with the different color), then we need to replace
+        // this piece with players, otherwise we should just switch
+        console.log("cell with piece selected when state.selectedPieceElement is not false.");
+        // @todo: implement eating enemy
+
+    } else if (!state.selectedPieceElement && selectedPieceElement.innerHTML) {
+        // player will use this piece to make his move, so we need to store it somewhere.
+        // but we need to be sure that it's correct piece of color the same as the player.
+        if ((state.currentPlayer === "white" && selectedPieceCode <= 9817) ||
+            (state.currentPlayer === "black" && selectedPieceCode > 9817)) {
+            // if white player is trying to move white piece
+            // or black player trying to move black piece then let him do it.
+            state.selectedPieceElement = selectedPieceElement;
+            clearSelection();
+            selectedPieceElement.classList.add("selected");
+        } else {
+            const msg = "You can not move the other players pieces!";
+            console.error(msg);
+            alert(msg);
+        }
+
     } else {
-        console.log("user clicked on the empty cell, so do nothing. Or something need to be done?")
+        // player clicked on the empty cell, so clearing selection
+        clearSelection();
+        console.log("user clicked on the empty cell so clearing selection.");
     }
 };
 
