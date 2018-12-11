@@ -67,3 +67,25 @@ main.black .row div {
 .row .black {
     background: burlywood;
 }
+
+.icon {
+    position: absolute;
+    left: 6.66rem;
+    top: 3.33rem;
+    color: black;
+    font-size: 6.66rem;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: initial;
+}
+
+#log {
+    list-style: none;
+    margin: 3.33rem 6.666rem;
+    padding: 0;
+}

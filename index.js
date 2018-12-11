@@ -17,6 +17,8 @@
     black chess bishop	♝	U+265D	&#9821;
     black chess knight	♞	U+265E	&#9822;
     black chess pawn	♟	U+265F	&#9823;
+
+    @todo: move to constants the codes of pieces
 */
 
 // @todo: highlight possible moves (need to get the state or store it form the beginning and render it)
@@ -24,8 +26,18 @@ const state = {
     selectedPieceElement: false,
     currentPlayer: "white",
 };
-const currentPlayerElement = document.getElementById("current-player");
+
+const _log = [];
 const mainElement = document.getElementById("main");
+const currentPlayerElement = document.getElementById("current-player");
+const logElement = document.getElementById("log");
+/**
+ * Party HARD!!!
+ * @returns {number, Array}
+ */
+const log = (...args) => args.length ? _log.push(args.join(" ")) : _log;
+const updateLog = () => logElement.innerHTML = `<li>${_log.join("</li><li>")}</li>`;
+const toggleLog = () => logElement.className = logElement.className === "hide" ? "show" : "hide";
 const clearSelection = () => mainElement.childNodes.forEach(rowNode => rowNode.childNodes.forEach(cellNode => cellNode.classList && cellNode.classList.remove("selected")));
 
 const switchPlayer = () => {
@@ -33,10 +45,11 @@ const switchPlayer = () => {
     // let show which players move is now
     mainElement.className = state.currentPlayer;
     currentPlayerElement.innerText = state.currentPlayer + "s";
-}
+};
 
 const putPieceIntoTheEmptyCell = (selectedPieceElement) => {
     console.info(state.selectedPieceElement.title, "-", selectedPieceElement.title);
+    log(state.selectedPieceElement.title + "-" + selectedPieceElement.title);
     selectedPieceElement.innerHTML = state.selectedPieceElement.innerHTML;
     // noinspection JSPrimitiveTypeWrapperUsage
     state.selectedPieceElement.innerHTML = "";
@@ -44,6 +57,8 @@ const putPieceIntoTheEmptyCell = (selectedPieceElement) => {
     state.selectedPieceElement = false;
     switchPlayer();
 };
+
+logElement.onclick = () => updateLog() && toggleLog();
 
 mainElement.onmouseup = (event) => {
     const selectedPieceElement = event.target;
